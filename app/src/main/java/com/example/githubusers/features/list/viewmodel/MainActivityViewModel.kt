@@ -20,6 +20,8 @@ class MainActivityViewModel(
     fun getUsers() {
         Coroutines.main {
             val offlineUsers = userRepository.getLocalUsers()
+
+            // if there is  internet connection, check the online data
             if (ConnectivityStatus.isOnline(application)) {
                 try {
                     val usersOnline = userRepository.getUsersOnline()
