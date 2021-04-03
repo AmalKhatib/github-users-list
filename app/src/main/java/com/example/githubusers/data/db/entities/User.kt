@@ -1,11 +1,10 @@
 package com.example.githubusers.data.db.entities
 
-import androidx.annotation.Nullable
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import org.jetbrains.annotations.NotNull
 
+/*
+* Database entity (table)*/
 @Entity(tableName = "User")
 data class User(
     val avatar_url: String,

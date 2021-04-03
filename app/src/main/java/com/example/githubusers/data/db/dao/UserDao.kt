@@ -1,11 +1,12 @@
 package com.example.githubusers.data.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.githubusers.data.db.entities.User
 
+/*
+* Database operations*/
 @Dao
 interface UserDao {
 
