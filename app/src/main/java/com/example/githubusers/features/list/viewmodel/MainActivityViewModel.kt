@@ -37,8 +37,7 @@ class MainActivityViewModel(
                             }
                         } else if (usersOnline.size > offlineUsers.size) { //new data available
                             //get the starting index of the new data
-                            val index =
-                                ((usersOnline.size) - (usersOnline.size - offlineUsers.size)) - 1
+                            val index = offlineUsers.size
 
                             //insert the new data into local
                             for (i in index..usersOnline.size) {
