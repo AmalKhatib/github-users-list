@@ -18,27 +18,7 @@ class MainActivityViewModel(
     var listener: Listener? = null
 
     fun getUsers() {
-        val user = User(
-            "https://avatars.githubusercontent.com/u/1?v=4",
-            "bio",
-            "https://github.com/mojombo",
-            "@chatterbugapp",
-            "amal@gmail.com",
-            10,
-            10,
-            "https://github.com/mojombo",
-            2,
-            "location",
-            "username",
-            "name",
-            10,
-            10,
-            "twitter",
-            "2021-03-18T22:50:53Z",
-            "https://api.github.com/users/mojombo"
-        )
         Coroutines.main {
-            //userRepository.insertUserToLocal(user)
             val offlineUsers = userRepository.getLocalUsers()
             if (ConnectivityStatus.isOnline(application)) {
                 try {
