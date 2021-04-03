@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Github users</string>
+    <string name="profile">Profile</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
+    <string name="repo">repo</string>
+    <string name="gists">gists</string>
+    <string name="lang">Ar</string>
+</resources>

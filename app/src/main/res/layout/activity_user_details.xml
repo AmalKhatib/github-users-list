@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="user"
+            type="com.example.githubusers.data.db.entities.User" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".features.user.view.UserDetailsActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_user"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{user.name}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/img_user"
+                    app:layout_constraintTop_toTopOf="@id/img_user" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableLeftCompat="@drawable/ic_github"
+                    app:drawableStartCompat="@drawable/ic_github"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:text="@{user.login}"
+                    app:layout_constraintStart_toEndOf="@id/img_user"
+                    app:layout_constraintTop_toBottomOf="@id/tv_full_name"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onGithubUsernameClicked"/>
+
+                <TextView
+                    android:id="@+id/tv_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{user.bio}"
+                    android:visibility="@{(TextUtils.isEmpty(user.bio)) ? View.GONE : View.VISIBLE}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_user" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/dark_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_bio"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_office_building"
+                    android:drawablePadding="5dp"
+                    android:text="@{user.company}"
+                    android:gravity="center"
+                    android:visibility="@{(TextUtils.isEmpty(user.company)) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_pin"
+                    android:drawablePadding="5dp"
+                    android:text="@{user.location}"
+                    android:visibility="@{(TextUtils.isEmpty(user.location)) ? View.GONE : View.VISIBLE}"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_company"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_email"
+                    android:drawablePadding="5dp"
+                    android:text="@{user.email}"
+                    android:visibility="@{(TextUtils.isEmpty(user.email)) ? View.GONE : View.VISIBLE}"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_location"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onEmailClicked"/>
+
+                <TextView
+                    android:id="@+id/tv_twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_twitter"
+                    android:drawablePadding="5dp"
+                    android:text="@{user.twitter_username}"
+                    android:visibility="@{(TextUtils.isEmpty(user.twitter_username)) ? View.GONE : View.VISIBLE}"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onTwitterClicked"/>
+
+                <TextView
+                    android:id="@+id/tv_blog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_link"
+                    android:drawablePadding="5dp"
+                    android:text="@{user.blog}"
+                    android:visibility="@{(TextUtils.isEmpty(user.blog)) ? View.GONE : View.VISIBLE}"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_twitter"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onBlogClicked"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_follow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_blog"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_followers"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:drawableStartCompat="@drawable/ic_users"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_following"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_follow"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_repo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:drawableStartCompat="@drawable/ic_bookmark"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_gists"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

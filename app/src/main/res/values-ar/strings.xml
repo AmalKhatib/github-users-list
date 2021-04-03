@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Github users</string>
+    <string name="profile">الحساب</string>
+    <string name="followers">المتابعون</string>
+    <string name="following">يتابع</string>
+    <string name="repo">repo</string>
+    <string name="gists">gists</string>
+    <string name="lang">En</string>
+</resources>
